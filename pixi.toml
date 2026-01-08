@@ -1,0 +1,74 @@
+[workspace]
+channels = [
+    "https://prefix.dev/pixi-build-backends",
+    "https://prefix.dev/conda-forge",
+]
+platforms = ["linux-64", "linux-aarch64", "osx-64", "osx-arm64", "win-64"]
+preview = ["pixi-build"]
+
+[workspace.build-variants]
+python = ["3.12.*", "3.13.*", "3.14.*"]
+
+[dependencies]
+pkoffee = { path = "." }
+
+[package]
+name = "pkoffee"
+version = "0.1.0"
+authors = [
+    "Thomas Vuillaume <thomas.vuillaume@lapp.in2p3.fr>",
+    "Vincent Pollet <vincent.pollet@lapp.in2p3.fr>",
+]
+description = "Coffee productivity analysis with statistical modeling"
+license = "MIT"
+homepage = "https://github.com/s3-school/pkoffee"
+repository = "https://github.com/s3-school/pkoffee"
+documentation = "https://github.com/s3-school/pkoffee/blob/main/README.md"
+
+[package.build]
+backend = { name = "pixi-build-python", version = ">=0.4.1,<5.0.0" }
+
+[package.build.config]
+
+[package.build-dependencies]
+
+[package.host-dependencies]
+# pixi build back-end calls uv or pip with "no-build-isolation" so build tools need to be available
+# setuptools and other build tools should be host dependencies for now, see https://pixi.sh/latest/build/dependency_types/#python-code
+uv = ">=0.9.9,<0.10.0"
+uv-build = ">=0.9.9,<0.10.0"
+
+[package.run-dependencies]
+bidict = ">=0.23.1,<1"
+python = "*"
+numpy = ">=2.3.5,<3"
+matplotlib-base = ">=3.10.8,<4"
+pandas = ">=2.3.3,<3"
+scipy = ">=1.16.3,<2"
+seaborn = ">=0.13.2,<0.14"
+tomlkit = ">=0.13.3,<1"
+
+# A feature per-python version to test the build-variants
+[feature.py312.dependencies]
+python=">=3.12,<3.13"
+
+[feature.py313.dependencies]
+python=">=3.13,<3.14"
+
+[feature.py314.dependencies]
+python=">=3.14,<3.15"
+
+[feature.dev.dependencies]
+jupyterlab = ">=4.4.3,<5"
+
+[environments]
+prod = { features = ["py313"], solve-group = "prod" }
+# use default for the dev environment so tasks are resolved in this environment (avoids having to specify env)
+# no need to include doc: pixi will figure the environment to use from the task if it is unique
+default = { features = ["dev", "py313"], solve-group = "prod" }
+
+# python 3.14 environments for testing
+prod314 = { features = ["py314"], solve-group = "prod314" }
+
+# python 3.12 environments for testing
+prod312 = { features = ["py312"], solve-group = "prod312" }

@@ -1,0 +1,68 @@
+[workspace]
+authors = ["pbederke <paulbederke@gmail.com>"]
+channels = ["conda-forge"]
+name = "pkoffee"
+platforms = ["win-64", "linux-64", "linux-aarch64", "osx-64", "osx-arm64"]
+version = "0.1.0"
+preview = ["pixi-build"]
+
+[tasks]
+
+[dependencies]
+numpy = ">=2.4.1,<3"
+matplotlib = ">=3.10.8,<4"
+pandas = ">=2.3.3,<3"
+scipy = ">=1.17.0,<2"
+seaborn = ">=0.13.2,<0.14"
+pkoffee = { path = "." }
+
+[feature.dev.dependencies]
+jupyterlab = "*"
+
+[feature.py312.dependencies]
+python = ">=3.12,<3.13"
+
+[feature.py313.dependencies]
+python = ">=3.13,<3.14"
+
+[feature.py314.dependencies]
+python = ">=3.14,<3.15"
+
+[environments]
+default = { features = ["default", "py313", "dev"], solve-group = "prod-313" }
+prod = { features = ["default", "py313"], solve-group = "prod-313" }
+prod312 = { features = ["default", "py312"], solve-group = "prod-312" }
+prod314 = { features = ["default", "py312"], solve-group = "prod-314" }
+
+[package]
+name = "pkoffee"
+version = "0.1.0"
+authors = [
+    "Thomas Vuillaume <thomas.vuillaume@lapp.in2p3.fr>",
+    "Vincent Pollet <vincent.pollet@lapp.in2p3.fr>",
+]
+description = "S3School Pkoffe example package"
+license = "MIT"
+homepage = "https://github.com/s3-school/pkoffee"
+repository = "https://github.com/s3-school/pkoffee"
+documentation = "https://github.com/s3-school/pkoffee/blob/main/README.md"
+
+[package.build]
+backend = { name = "pixi-build-python", version = ">=0.4.1,<5.0.0" }
+
+[package.build.config]
+
+[package.build-dependencies]
+
+[package.host-dependencies]
+# pixi build back-end calls uv or pip with "no-build-isolation" so build tools need to be available
+# setuptools and other build tools should be host dependencies for now, see https://pixi.sh/latest/build/dependency_types/#python-code
+uv = ">=0.9.9,<0.10.0"
+uv-build = ">=0.9.9,<0.10.0"
+
+[package.run-dependencies]
+numpy = ">=2.4.1,<3"
+matplotlib = ">=3.10.8,<4"
+pandas = ">=2.3.3,<3"
+scipy = ">=1.17.0,<2"
+seaborn = ">=0.13.2,<0.14"

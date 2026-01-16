@@ -189,7 +189,7 @@ class MichaelisMentenSaturation:
         Parameters
         ----------
         x_min : data_dtype
-            Maximum input value
+            Minimum input value
         x_max : data_dtype
             Maximum input value
         y_min : data_dtype

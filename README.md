@@ -1,4 +1,15 @@
 [![check that code works](https://github.com/misualex/pkoffee/actions/workflows/test.yml/badge.svg)](https://github.com/misualex/pkoffee/actions/workflows/test.yml)
+[![Pixi Badge](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/prefix-dev/pixi/main/assets/badge/v0.json)](https://pixi.sh)
+![Python Version](https://img.shields.io/badge/python-3.12%20|%203.13-blue)
+![Ruff](https://img.shields.io/badge/code%20style-ruff-000000.svg)
+
+![GitHub last commit](https://img.shields.io/github/last-commit/misualex/pkoffee)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/misualex/pkoffee)
+
+
+![GitHub pull requests](https://img.shields.io/github/issues-pr/misualex/pkoffee)
+![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/misualex/pkoffee)
+
 
 # PKoffee - Coffee Productivity Analysis
 

@@ -64,6 +64,7 @@ python=">=3.14,<3.15"
 
 [feature.dev.dependencies]
 jupyterlab = ">=4.4.3,<5"
+ruff = ">=0.9.0,<1"
 
 [environments]
 prod = { features = ["py313"], solve-group = "prod" }

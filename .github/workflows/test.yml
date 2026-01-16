@@ -1,0 +1,46 @@
+name: check that code works
+on: [push]
+
+jobs:
+  code-quality:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v6
+
+      - name: Install pixi
+        uses: prefix-dev/setup-pixi@v0.9.3
+        with:
+          pixi-version: v0.62.2 # good to pin this since pixi is not 1.0 yet!
+
+      - name: look for syntax errors with ruff
+        run: pixi run ruff check
+
+  unit-tests:
+    runs-on: ${{ matrix.os }}
+    needs: code-quality # don't bother running tests if code-checks fails.
+
+    strategy:
+      fail-fast: false # don't stop all jobs if one fails
+      matrix:
+        os:
+          - ubuntu-latest
+          - macos-latest
+          - windows-latest
+        environment:
+          - prod
+          - prod314
+          - prod312
+
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v6
+
+      - name: Install pixi
+        uses: prefix-dev/setup-pixi@v0.9.3
+        with:
+          pixi-version: v0.62.2 
+          environments: ${{ matrix.environment }}
+
+      - run: pixi run -e ${{ matrix.environment }} pytest

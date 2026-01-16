@@ -6,4 +6,4 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-            - echo "running tests on ${{runner.os}}"
+            - echo "running tests on something"

@@ -1,9 +1,24 @@
-name: check that code works
-on: [push]
-
+name: A simple test workflow
+on: [push]   # when to run this workflow, on every push
 jobs:
-  say-hello:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Say hello
-        run: echo "running tests on $RUNNER_OS"
+    unit-tests:  # this can be any name: you choose it
+        runs-on: ubuntu-latest   # which OS to start up
+        needs: code-check
+        
+        steps:   # what steps to run in this job
+            - run: "echo 'Running tests on: ${{ runner.os }}'"
+            - run: "echo 'Repo: ${{ github.repository }}'"
+            - run: "echo 'Branch: ${{ github.ref }}'"
+    code-check:
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout the code
+              uses: actions/checkout@v6
+
+            - name: install pixi
+              uses: prefix-dev/setup-pixi@v0.9.3
+              with:
+                pixi-version: v0.63.0
+
+            - name: run ruff
+              run: pixi run ruff check 

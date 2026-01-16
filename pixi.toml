@@ -11,6 +11,7 @@ python = ["3.12.*", "3.13.*", "3.14.*"]
 
 [dependencies]
 pkoffee = { path = "." }
+pytest = ">=9.0.2,<10"
 
 [package]
 name = "pkoffee"
@@ -48,6 +49,8 @@ scipy = ">=1.16.3,<2"
 seaborn = ">=0.13.2,<0.14"
 tomlkit = ">=0.13.3,<1"
 
+[feature.test.dependencies]
+pytest="*"
 # A feature per-python version to test the build-variants
 [feature.py312.dependencies]
 python=">=3.12,<3.13"
@@ -65,7 +68,7 @@ jupyterlab = ">=4.4.3,<5"
 prod = { features = ["py313"], solve-group = "prod" }
 # use default for the dev environment so tasks are resolved in this environment (avoids having to specify env)
 # no need to include doc: pixi will figure the environment to use from the task if it is unique
-default = { features = ["dev", "py313"], solve-group = "prod" }
+default = { features = ["dev", "py313","test"], solve-group = "prod" }
 
 # python 3.14 environments for testing
 prod314 = { features = ["py314"], solve-group = "prod314" }

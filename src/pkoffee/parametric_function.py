@@ -416,5 +416,5 @@ class Peak2Model:
 
     @classmethod
     def param_bounds(cls) -> ParametersBounds:
-        """Boundary values for the `Logistic`."""
+        """Boundary values for the `Peak2Model`."""
         return ParametersBounds(min={"a": neg_inf, "b": data_dtype(0.0)}, max=dict.fromkeys(["a", "b"], pos_inf))

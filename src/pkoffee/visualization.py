@@ -43,7 +43,7 @@ class FigureParameters(NamedTuple):
     figsize: tuple[float, float] | None
         Figure size in inches (matplotlib unit...) as (width, height). Default is (12, 7)
     dpi: int
-        Drop Per Inch (number of ink droplets per inch) to use for the figure. Default is 150.
+        Dots Per Inch (pixel density of the figure) to use for the figure. Default is 150.
     """
 
     y_limits: tuple[float, float] | None = None

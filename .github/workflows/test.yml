@@ -36,6 +36,9 @@ jobs:
         with:
           pixi-version: v0.62.2
 
+      - name: Install dependencies
+        run: pixi install
+
       - name: Run pytest with coverage
         run: pixi run pytest --cov=pkoffee --cov-report=xml --cov-report=html --cov-report=term
 

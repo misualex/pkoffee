@@ -2,9 +2,9 @@ name: Test
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ main, develop, pkoffee-test ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, pkoffee-test ]
   workflow_dispatch:
 
 jobs:

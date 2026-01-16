@@ -2,8 +2,8 @@ name: check that code works
 on: [push]
 
 jobs:
-    tests:
+    say-hello:
         runs-on: ubuntu-latest
 
         steps:
-            - echo "running tests on something"
+            - echo "running tests on ${{ runner.os  }}"

@@ -34,7 +34,7 @@ class NoModelProvidedError(ValueError):
 
 
 class FigureParameters(NamedTuple):
-    """Usual parameters of `matlplotlib.figure.Figure`.
+    """Usual parameters of `matplotlib.figure.Figure`.
 
     Attributes
     ----------

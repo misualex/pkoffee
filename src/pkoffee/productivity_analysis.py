@@ -105,10 +105,11 @@ def fit_all_models(
         try:
             fitted_model, _ = fit_model(x, y, mdl, max_iterations)
             fitted_models.append(fitted_model)
+            logger.info("Successfully fitted model %s", mdl.name)
         except (ValueError, RuntimeError):
             logger.warning("Warning: failed to fit %s model.", mdl.name, exc_info=True)
             fitted_models.append(mdl)
-        logger.info("Successfully fitted model %s", mdl.name)
+            logger.info("Using default parameters for model %s after failed fitting.", mdl.name)
 
     Model.sort(fitted_models)
 

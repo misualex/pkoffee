@@ -41,7 +41,7 @@ class PKoffeArgParseFormatter(argparse.RawTextHelpFormatter, argparse.ArgumentDe
 
 
 def pkoffe_argparser() -> argparse.ArgumentParser:
-    """Define the arguments of the PKoffe CLI."""
+    """Define the arguments of the PKoffee CLI."""
     parser = argparse.ArgumentParser(
         description="PKoffee - Coffee Productivity Analysis Tool",
         formatter_class=PKoffeArgParseFormatter,

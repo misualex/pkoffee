@@ -15,7 +15,7 @@ jobs:
           pixi-version: v0.62.2 # good to pin this since pixi is not 1.0 yet!
 
       - name: look for syntax errors with ruff
-        run: pixi run -e default ruff check
+        run: pixi run ruff check
 
   unit-tests:
     runs-on: ${{ matrix.os }}

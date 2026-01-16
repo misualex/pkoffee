@@ -19,7 +19,7 @@ AnyShapeDataDtypeArray = TypeVar("AnyShapeDataDtypeArray", bound=np.ndarray[tupl
 
 
 class RequiredColumn(StrEnum):
-    """Required Columns in the coffe productivity CSV data."""
+    """Required Columns in the coffee productivity CSV data."""
 
     CUPS = "cups"
     PRODUCTIVITY = "productivity"
